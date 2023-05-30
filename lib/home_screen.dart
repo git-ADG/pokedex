@@ -32,17 +32,45 @@ class _HomeScreenState extends State<HomeScreen> {
           pokedex !=null ?
           Expanded(child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 1.2
+            childAspectRatio: 1.4
           ),
               itemCount:pokedex.length ,
             itemBuilder: (context,index){
+            var type=pokedex[index]['type'][0];
             return Card(
-              child: Column(
-                children: [
-                  Text(pokedex[index]['name']),
-                  CachedNetworkImage(imageUrl: pokedex[index]['img']),
+              color: Colors.green,
+              child: Stack(
+                children:[
+                  Positioned(
+                      bottom:-10,
+                      right: -10,
+                      child: Image.asset("images/pokeball.png", height: 100, fit: BoxFit.fitHeight,)
+                  ),
+                    Positioned(
+                      top: 30,
+                        left: 20,
+                        child: Text(pokedex[index]['name'])
+                    ),
+                  Positioned(
+                      top: 45,
+                      left: 20,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.black12,
+                          borderRadius: BorderRadius.all(Radius.circular(20))
+                        ),
 
-                ],
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
+                            child: Text(type.toString()),
+                          ))
+                  ),
+                    Positioned(
+                        bottom:-10,
+                        right: -10,
+                        child: CachedNetworkImage(imageUrl: pokedex[index]['img'])
+                    ),
+                  ],
               ),
             );
             },
