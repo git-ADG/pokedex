@@ -26,61 +26,109 @@ class _HomeScreenState extends State<HomeScreen> {
   List pokedex=[ ];
   @override
   Widget build(BuildContext context) {
+    var width=MediaQuery.of(context).size.width;
+    var height=MediaQuery.of(context).size.height;
     return  Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          pokedex !=null ?
-          Expanded(child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.4
+          Positioned(
+              top: -50,
+              right: -50,
+              child: Image.asset("images/pokeball.png",width: 200,fit: BoxFit.fitWidth,)
           ),
-              itemCount:pokedex.length ,
-            itemBuilder: (context,index){
-            var type=pokedex[index]['type'][0];
-            return Card(
-              color: Colors.green,
-              child: Stack(
-                children:[
-                  Positioned(
-                      bottom:-10,
-                      right: -10,
-                      child: Image.asset("images/pokeball.png", height: 100, fit: BoxFit.fitHeight,)
-                  ),
-                    Positioned(
-                      top: 30,
-                        left: 20,
-                        child: Text(pokedex[index]['name'])
-                    ),
-                  Positioned(
-                      top: 45,
-                      left: 20,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.black12,
-                          borderRadius: BorderRadius.all(Radius.circular(20))
-                        ),
-
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
-                            child: Text(type.toString()),
-                          ))
-                  ),
-                    Positioned(
-                        bottom:-10,
-                        right: -10,
-                        child: CachedNetworkImage(imageUrl: pokedex[index]['img'])
-                    ),
-                  ],
-              ),
-            );
-            },
+          Positioned(
+            top: 80,
+              left: 20,
+              child: Text(
+            "POKEDEX",style: TextStyle(
+            color: Colors.black,fontWeight: FontWeight.bold,fontSize: 30
+          ),
           )
-          ):
-              Center(
-                child: CircularProgressIndicator(),
+          ),
+          Positioned(
+            top: 150,
+          bottom: 0,
+          width: width,
+          child: Column(
+            children: [
+              pokedex !=null ?
+              Expanded(child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.4
+              ),
+                  itemCount:pokedex.length ,
+                itemBuilder: (context,index){
+                var type=pokedex[index]['type'][0];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 12),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: type=='Grass' ? Colors.greenAccent :
+                      type=='Fire' ? Colors.redAccent :
+                        type=='Water' ? Colors.blue :
+                        type=='Bug'  ? Colors.lightGreenAccent :
+                        type=='Electric' ? Colors.yellow :
+                        type=='Rock' ? Colors.black38 :
+                        type=='Ground' ? Colors.brown :
+                        type=='Psychic' ? Colors.pinkAccent :
+                        type=='Fighting' ? Colors.orange :
+                        type=='Ice' ? Colors.lightBlueAccent :
+                        type=='Ghost' ? Colors.deepPurple :
+                        type=='Normal' ? Colors.black12 :
+                        type=='Poison' ? Colors.purple :
+                        Colors.purpleAccent,
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    child: Stack(
+                      children:[
+
+                          Positioned(
+                            top: 8,
+                              left: 10,
+                              child: Text(pokedex[index]['name'],
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,fontSize: 17,
+                                color: Colors.white
+                              ),
+                              )
+                          ),
+                        Positioned(
+                            top: 32,
+                            left: 10,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.black26,
+                                borderRadius: BorderRadius.all(Radius.circular(20))
+                              ),
+
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8,right: 8,top: 4,bottom: 4),
+                                  child: Text(type.toString(),
+                                  style: TextStyle(color: Colors.white),),
+                                ))
+                        ),
+                          Positioned(
+                              bottom:-10,
+                              right: -10,
+                              child: CachedNetworkImage(imageUrl: pokedex[index]['img'],
+                              height: 100,
+                              fit: BoxFit.fitHeight,
+                              )
+                          ),
+                        ],
+                    ),
+                  ),
+                );
+                },
               )
-        ],
-      )
+              ):
+                  Center(
+                    child: CircularProgressIndicator(),
+                  )
+            ],
+          ),
+        ),
+      ])
 
     );
   }
