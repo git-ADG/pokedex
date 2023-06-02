@@ -1,16 +1,1 @@
-# pokedex
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+A pokedex application made using flutter with beautiful UI/UX. It contains a list of the first 151 pokemon shown in the anime. Clicking on any pokemon takes us to a detailed screen for each pokemon. A hero animation is also added for the pokemon image during the transition from homescreen to detailed screen
