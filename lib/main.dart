@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/home_screen.dart';
+import 'package:flutter/services.dart';
 
 void main(){
   runApp(const Pokemon());
@@ -10,6 +11,7 @@ class Pokemon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
