@@ -4,7 +4,7 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://github.com/lordADG/pokedex/blob/main/screenshots/WhatsApp%20Image%202023-06-09%20at%207.16.12%20PM.webp" alt="project-screenshot" width="400" height="400/">
+<img src="screenshots/WhatsApp Image 2023-06-09 at 7.16.12 PM.webp" alt="project-screenshot" width="400" height="400/">
 
 <img src="https://github.com/lordADG/pokedex/blob/main/screenshots/WhatsApp%20Image%202023-06-09%20at%207.16.13%20PM.webp" alt="project-screenshot" width="400" height="400/">
 
